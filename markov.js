@@ -32,12 +32,26 @@ class MarkovMachine {
     });
     this.chains = chains;
   }
+  // Pick a random choice from array
+
+  static choice(ar) {
+    return ar[Math.floor(Math.random() * ar.length)];
+  }
 
   /** return random text from chains */
 
   makeText(numWords = 100) {
     // TODO
-    console.log("Make TESSSST");
+    let keys = Array.from(this.chains.keys());
+    let key = MarkovMachine.choice(keys);
+    let output = [];
+
+    // Create chains until no word left
+    while (output.length < numWords && key != null) {
+      output.push(key);
+      key = MarkovMachine.choice(this.chains.get(key));
+    }
+    return output.join(" ");
   }
 }
 
