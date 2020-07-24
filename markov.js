@@ -1,7 +1,5 @@
 /** Textual markov chain generator */
 
-const text = "the cat in the hat is in the hat";
-
 class MarkovMachine {
   /** build markov machine; read in text.*/
 
